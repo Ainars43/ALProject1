@@ -6,6 +6,6 @@ codeunit 50101 CalculateBMI
 
     procedure CalculateBMI(Weight: Decimal; Height: Decimal) : Decimal    
     begin
-       exit(Weight / System.Power(Height, 2));                
+       exit(Weight / Power(Height, 2));                
     end;
 }

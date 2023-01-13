@@ -1,6 +1,6 @@
 page 50101 "Customer Weight Group Page"
 {
-    PageType = Card;
+    PageType = List;
     ApplicationArea = All;    
     SourceTable = "Customer Weight Group";
     
@@ -12,30 +12,16 @@ page 50101 "Customer Weight Group Page"
             {
                 field("Customer Weight Group Code"; Rec.Code)
                 {
-                    ApplicationArea = All;                    
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the code of customer weight group.';                    
                 }
 
                 field("Customer Weight Group Description"; Rec.Description)
                 {
-                    ApplicationArea = All;                    
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the description of customer weight group.';                    
                 }
             }
         }
     }
-    
-    actions
-    {
-        area(Processing)
-        {
-            action(ActionName)
-            {
-                ApplicationArea = All;
-                
-                trigger OnAction()
-                begin
-                    
-                end;
-            }
-        }
-    }  
 }

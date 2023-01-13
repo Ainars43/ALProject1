@@ -49,8 +49,8 @@ report 50102 WorksheetReport
                 MyRecord: Record "My Journal2";
             begin                
                 MyRecord.Init();                
-                MyRecord.CustomerNo:= "No.";
-                MyRecord.CustomerName:= Name;                
+                MyRecord.CustomerNo := "No.";
+                //MyRecord.CustomerName:= Name;                
                 MyRecord.Insert(); 
             end;
         }
@@ -65,10 +65,11 @@ report 50102 WorksheetReport
             {
                 group(Options)
                 {
-                    field(ShowExceptCustomers; ShowExceptCustomers)
+                    field(ShowExceptingCustomers; ShowExceptCustomers)
                     {
                         ApplicationArea = All;
                         Caption = 'Show Only Customers Without Height And Weight Values?';
+                        ToolTip = 'Choose to show only customers without height and weight values or all customers.';
                     }
                 }
             }

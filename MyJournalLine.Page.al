@@ -13,27 +13,33 @@ page 50102 "My Journal Line"
             {
                 field(EntryNo;Rec.EntryNo)
                 {     
-                    ApplicationArea = All;           
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies a number of entry.';           
                 }
                 field(CustomerNo;Rec.CustomerNo)
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies a number of customer.';
                 }
                 field(CustomerName;Rec.CustomerName)
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies a name of customer.';
                 }
                 field("Customer Weight Group";Rec."Customer Weight Group")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the group of weight that the customer is in.';
                 }
                 field(Height;Rec.Height)
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the customer height.';
                 }
                 field(Weight;Rec.Weight)
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the customer weight.';
                 }
             }
         }        
@@ -47,6 +53,7 @@ page 50102 "My Journal Line"
             {
                 ApplicationArea = All;
                 RunObject = report WorksheetReport;
+                ToolTip = 'Suggest customers to add to journal.';
                 
                 trigger OnAction()
                 begin                    
@@ -56,26 +63,28 @@ page 50102 "My Journal Line"
             action("Post values")
             {
                 ApplicationArea = All;
+                ToolTip = 'Post changes in customers records.';
 
                 trigger OnAction()
                 var
                     Customer: Record Customer;
                     MyJournal: Record "My Journal2";
                 begin
-                    if MyJournal.FindFirst() then
+                    if MyJournal.FindSet() then
                     repeat
                         Customer.Get(MyJournal.CustomerNo);
-                        Customer.Height:= MyJournal.Height;
-                        Customer.Weight:= MyJournal.Weight;
-                        Customer.CustomerWeightGroup:= MyJournal."Customer Weight Group";
+                        Customer.Height := MyJournal.Height;
+                        Customer.Weight := MyJournal.Weight;
+                        Customer.CustomerWeightGroup := MyJournal."Customer Weight Group";
                         Customer.Modify();
-                    until (MyJournal.Next = 0);
+                    until MyJournal.Next() = 0;
                 end;
             }
 
             action("Delete")
             {
                 ApplicationArea = All;
+                ToolTip = 'Delete entries from journal which are posted to customer records.';
 
                 trigger OnAction()
                 var
